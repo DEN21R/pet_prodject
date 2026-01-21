@@ -40,9 +40,6 @@ function Header() {
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
-          maxWidth: '1440px',
-          width: '100%',
-          mx: 'auto',
         }}
       >
         <Box

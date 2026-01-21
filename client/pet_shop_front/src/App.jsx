@@ -7,11 +7,26 @@ import Footer from './components/footer'
 
 function App() {
   return (
-    <Box>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        maxWidth: '1440px',
+        width: '100%',
+        mx: 'auto',
+      }}
+    >
       <Header />
-      <Routes>
-        <Route path="/cart" element={<Cart />} />
-      </Routes>
+      <Box
+        sx={{
+          flexGrow: 1,
+        }}
+      >
+        <Routes>
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </Box>
       <Footer />
     </Box>
   )
