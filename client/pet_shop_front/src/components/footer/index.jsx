@@ -14,9 +14,9 @@ const Item = styled(Paper)(({ theme }) => ({
 function Footer() {
   return (
     <Box sx={{ py: 10, px: 5, bgcolor: '#fff' }}>
-      <Typography fontSize={64} fontWeight={700} mb={5}>
-        Contact
-      </Typography>
+      <Box mb={5}>
+        <Typography variant="titleTypography">Contact</Typography>
+      </Box>
 
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={4} alignItems="flex-start">

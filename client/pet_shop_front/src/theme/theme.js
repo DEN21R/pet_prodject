@@ -15,7 +15,7 @@ const theme = createTheme({
             fontWeight: 500,
             color: '#8b8b8b',
             paddingBottom: '16px',
-            lineHeight: 0,
+            lineHeight: '110%',
           },
         },
         {
@@ -24,6 +24,45 @@ const theme = createTheme({
             fontSize: '2.5rem',
             fontWeight: 700,
             color: '#282828',
+            lineHeight: '110%',
+            '@media (max-width: 768px)': {
+              fontSize: '2rem',
+            },
+            '@media (max-width: 480px)': {
+              fontSize: '1.5rem',
+            },
+          },
+        },
+        {
+          props: { variant: 'bigTypography' },
+          style: {
+            color: '#FFFFFF',
+            fontSize: '6rem',
+            fontWeight: 700,
+            lineHeight: '110%',
+            paddingBottom: '2.5rem',
+            '@media (max-width: 768px)': {
+              fontSize: '4rem',
+            },
+            '@media (max-width: 480px)': {
+              fontSize: '2.5rem',
+            },
+          },
+        },
+        {
+          props: { variant: 'titleTypography' },
+          style: {
+            color: '#282828',
+            fontSize: '4rem',
+            fontWeight: 700,
+            lineHeight: '110%',
+
+            '@media (max-width: 768px)': {
+              fontSize: '2.5rem',
+            },
+            '@media (max-width: 480px)': {
+              fontSize: '2rem',
+            },
           },
         },
       ],

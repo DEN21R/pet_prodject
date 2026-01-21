@@ -1,32 +1,21 @@
-import { Box, Button, styled, Typography } from '@mui/material'
+import { Box, styled, Typography } from '@mui/material'
 import home_bg from '../../../assets/home_bg.jpg'
 import { useNavigate } from 'react-router-dom'
+import ActionButton from '../../../ui/ActionButton'
 
-const HeroBox = styled(Box)(() => ({
+const HeroBox = styled(Box)(({ theme }) => ({
   backgroundImage: `url(${home_bg})`,
   backgroundSize: 'cover',
   backgroundPosition: 'center',
-  height: { xs: 400, md: 600 },
+  height: '400px',
   padding: `clamp(40px, 10vw, 80px) clamp(20px, 5vw, 40px) clamp(80px, 20vw, 210px) clamp(20px, 5vw, 40px)`,
-}))
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'start',
 
-const HeroTypography = styled(Typography)(() => ({
-  fontSize: '6rem',
-  color: '#FFFFFF',
-  fontWeight: 700,
-  lineHeight: '110%',
-  paddingBottom: '2.5rem',
-  '@media (max-width: 768px)': {
-    fontSize: '4rem',
+  [theme.breakpoints.up('md')]: {
+    height: '600px',
   },
-  '@media (max-width: 480px)': {
-    fontSize: '2.5rem',
-  },
-}))
-
-const HeroButton = styled(Button)(() => ({
-  fontSize: '1.25rem',
-  padding: '1rem clamp(16px, 5vw, 56px)',
 }))
 
 function MainPromotionsSection() {
@@ -34,10 +23,12 @@ function MainPromotionsSection() {
 
   return (
     <HeroBox>
-      <HeroTypography>Amazing Discounts on Pets Products!</HeroTypography>
-      <HeroButton variant="contained" onClick={() => navigate('/cart')}>
+      <Typography variant="bigTypography">
+        Amazing Discounts on Pets Products!
+      </Typography>
+      <ActionButton variant="contained" onClick={() => navigate('/cart')}>
         Check out
-      </HeroButton>
+      </ActionButton>
     </HeroBox>
   )
 }

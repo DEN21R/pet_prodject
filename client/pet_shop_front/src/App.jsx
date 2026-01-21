@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import Cart from './pages/cart'
 import Footer from './components/footer'
 import Main from './pages/main'
+import ErrorPage from './pages/errorPage'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </Box>
       <Footer />
