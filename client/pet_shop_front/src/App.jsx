@@ -4,6 +4,7 @@ import Header from './components/header'
 import { Routes, Route } from 'react-router-dom'
 import Cart from './pages/cart'
 import Footer from './components/footer'
+import Main from './pages/main'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         }}
       >
         <Routes>
+          <Route path="/" element={<Main />} />
           <Route path="/cart" element={<Cart />} />
         </Routes>
       </Box>
