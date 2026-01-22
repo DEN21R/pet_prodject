@@ -29,7 +29,9 @@ function Header() {
   return (
     <AppBar
       position="static"
+      elevation={0}
       sx={{
+        borderBottom: '1px solid #DDDDDD',
         backgroundColor: '#fff',
         px: 5,
         py: 3.75,

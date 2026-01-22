@@ -27,7 +27,9 @@ function Categories() {
         items={[{ label: 'Main page', to: '/' }, { label: 'categories' }]}
       />
 
-      <Typography variant="titleTypography">Categories</Typography>
+      <Box sx={{ mb: 5 }}>
+        <Typography variant="titleTypography">Categories</Typography>
+      </Box>
       <Box>
         <Grid container justifyContent={'center'} spacing={4} pb={21}>
           {list.map(({ id, title, image }) => (
