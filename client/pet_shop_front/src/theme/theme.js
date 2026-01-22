@@ -9,11 +9,23 @@ const theme = createTheme({
     MuiTypography: {
       variants: [
         {
-          props: { variant: 'cardTitle' },
+          props: { variant: 'footerTitle' },
           style: {
             fontSize: '1.25rem',
             fontWeight: 500,
             color: '#8b8b8b',
+            paddingBottom: '16px',
+            lineHeight: '110%',
+          },
+        },
+        {
+          props: { variant: 'cardTitle' },
+          style: {
+            display: 'block',
+            textAlign: 'center',
+            fontSize: '1.25rem',
+            fontWeight: 500,
+            color: '#282828',
             paddingBottom: '16px',
             lineHeight: '110%',
           },

@@ -29,7 +29,7 @@ function Footer() {
                 },
               }}
             >
-              <Typography variant="cardTitle">Phone</Typography>
+              <Typography variant="footerTitle">Phone</Typography>
               <Typography variant="cardInfo">+49 30 915-88492</Typography>
             </Item>
           </Grid>
@@ -42,7 +42,7 @@ function Footer() {
                 },
               }}
             >
-              <Typography variant="cardTitle">Socials</Typography>
+              <Typography variant="footerTitle">Socials</Typography>
               <Box
                 sx={{ display: 'flex', alignItems: 'center', gap: 2, pt: 1 }}
               >
@@ -64,7 +64,7 @@ function Footer() {
                 },
               }}
             >
-              <Typography variant="cardTitle">Address</Typography>
+              <Typography variant="footerTitle">Address</Typography>
               <Typography variant="cardInfo">
                 Wallstraße 9–13, 10179 Berlin, Deutschland
               </Typography>
@@ -79,7 +79,7 @@ function Footer() {
                 },
               }}
             >
-              <Typography variant="cardTitle">Working Hours</Typography>
+              <Typography variant="footerTitle">Working Hours</Typography>
               <Typography variant="cardInfo">24 hours a day</Typography>
             </Item>
           </Grid>

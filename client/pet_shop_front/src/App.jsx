@@ -6,6 +6,7 @@ import Cart from './pages/cart'
 import Footer from './components/footer'
 import Main from './pages/main'
 import ErrorPage from './pages/errorPage'
+import Categories from './pages/categories'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/categories" element={<Categories />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
