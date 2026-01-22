@@ -32,7 +32,7 @@ function ErrorPage() {
         Page Not Found
       </Typography>
       <Typography
-        variant="cardTitle"
+        variant="footerTitle"
         textAlign={'center'}
         maxWidth={625}
         width={'100%'}
