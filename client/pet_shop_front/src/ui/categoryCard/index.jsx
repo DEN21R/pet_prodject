@@ -1,6 +1,8 @@
 import { Card, CardMedia, Typography } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
-function CategoryCard({ title, image }) {
+function CategoryCard({ id, title, image }) {
+  const navigate = useNavigate()
   return (
     <Card
       sx={{
@@ -12,6 +14,7 @@ function CategoryCard({ title, image }) {
         component="img"
         src={`http://localhost:3333${image}`}
         alt={title}
+        onClick={() => navigate(`/productsCategory/${id}`)}
       />
       <Typography variant="cardTitle" mt={2}>
         {title}

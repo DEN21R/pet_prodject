@@ -12,7 +12,7 @@ function BreadcrumbsComponent({ items }) {
           <Divider
             orientation="horizontal"
             flexItem
-            sx={{ width: 16, borderColor: '#DDDDDD', m: 'none' }}
+            sx={{ width: 16, borderColor: '#DDDDDD', m: 0 }}
           />
         }
       >
