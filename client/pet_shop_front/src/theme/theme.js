@@ -31,6 +31,22 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'cardProductTitle' },
+          style: {
+            display: 'block',
+            textAlign: 'center',
+            fontSize: '1.25rem',
+            fontWeight: 500,
+            color: '#282828',
+            paddingBottom: '16px',
+            lineHeight: '130%',
+            width: '100%',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          },
+        },
+        {
           props: { variant: 'cardInfo' },
           style: {
             fontSize: '2.5rem',

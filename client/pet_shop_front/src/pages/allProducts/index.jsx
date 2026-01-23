@@ -31,7 +31,7 @@ function AllProducts() {
         <Typography variant="titleTypography">All products</Typography>
       </Box>
       <Box>
-        <Grid container justifyContent={'center'} spacing={4} pb={21}>
+        <Grid container justifyContent={'center'} spacing={4}>
           {all.map(({ id, title, image, price, discont_price }) => (
             <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={id}>
               <ProductCard
