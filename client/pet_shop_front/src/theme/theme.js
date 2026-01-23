@@ -31,6 +31,15 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'filterTitle' },
+          style: {
+            fontSize: '1.25rem',
+            fontWeight: 600,
+            color: '#282828',
+            lineHeight: '130%',
+          },
+        },
+        {
           props: { variant: 'cardProductTitle' },
           style: {
             display: 'block',

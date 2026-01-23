@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllProducts } from '../../redux/slices/productsSlice'
 import BreadcrumbsComponent from '../../ui/breadcrumbsComponent'
 import ProductCard from '../../ui/productCard'
+import FilterBar from '../../ui/filterBar'
 
 function AllProducts() {
   const dispatch = useDispatch()
@@ -30,6 +31,7 @@ function AllProducts() {
       <Box sx={{ mb: 5 }}>
         <Typography variant="titleTypography">All products</Typography>
       </Box>
+      <FilterBar />
       <Box>
         <Grid container justifyContent={'center'} spacing={4}>
           {all.map(({ id, title, image, price, discont_price }) => (
