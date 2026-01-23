@@ -49,6 +49,7 @@ function ProductsCategory() {
             ({ id, title, image, price, discont_price }) => (
               <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={id}>
                 <ProductCard
+                  id={id}
                   title={title}
                   image={image}
                   price={price}

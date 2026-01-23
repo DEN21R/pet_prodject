@@ -1,6 +1,8 @@
 import { Card, CardMedia, Typography, Box } from '@mui/material'
+import { useNavigate } from 'react-router-dom'
 
-function ProductCard({ title, image, price, discont_price }) {
+function ProductCard({ id, title, image, price, discont_price }) {
+  const navigate = useNavigate()
   return (
     <Card
       sx={{
@@ -18,7 +20,9 @@ function ProductCard({ title, image, price, discont_price }) {
           width: '100%',
           height: { xs: 200, sm: 240, md: 284 },
           objectFit: 'cover',
+          cursor: 'pointer',
         }}
+        onClick={() => navigate(`/product/${id}`)}
       />
 
       <Box

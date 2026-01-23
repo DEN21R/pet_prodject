@@ -25,12 +25,25 @@ export const fetchProductsByCategory = createAsyncThunk(
   },
 )
 
+export const fetchProductById = createAsyncThunk(
+  'products/fetchById',
+  async (productId, { rejectWithValue }) => {
+    try {
+      const response = await api.get(`/products/${Number(productId)}`)
+      return response.data
+    } catch (error) {
+      return rejectWithValue(error.message)
+    }
+  },
+)
+
 const productsSlice = createSlice({
   name: 'products',
   initialState: {
     all: [],
     categoryProducts: [],
     currentCategory: null,
+    current: null,
     status: 'idle',
     error: null,
   },
@@ -59,6 +72,19 @@ const productsSlice = createSlice({
         state.categoryProducts = action.payload.data
       })
       .addCase(fetchProductsByCategory.rejected, (state, action) => {
+        state.status = 'error'
+        state.error = action.payload
+      })
+      .addCase(fetchProductById.pending, (state) => {
+        state.status = 'loading'
+        state.error = null
+      })
+      .addCase(fetchProductById.fulfilled, (state, action) => {
+        state.status = 'success'
+        state.current =
+          Array.isArray(action.payload) ? action.payload[0] : action.payload
+      })
+      .addCase(fetchProductById.rejected, (state, action) => {
         state.status = 'error'
         state.error = action.payload
       })
