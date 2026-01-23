@@ -32,7 +32,7 @@ function ProductsCategory() {
       <BreadcrumbsComponent
         items={[
           { label: 'Main page', to: '/' },
-          { label: 'Categories', to: '/' },
+          { label: 'Categories', to: '/categories' },
           { label: `${currentCategory?.title || 'Products'}` },
         ]}
       />

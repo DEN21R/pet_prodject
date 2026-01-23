@@ -15,6 +15,7 @@ function CategoryCard({ id, title, image }) {
         src={`http://localhost:3333${image}`}
         alt={title}
         onClick={() => navigate(`/productsCategory/${id}`)}
+        sx={{ cursor: 'pointer' }}
       />
       <Typography variant="cardTitle" mt={2}>
         {title}
