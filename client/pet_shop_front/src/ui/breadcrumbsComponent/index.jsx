@@ -8,6 +8,13 @@ function BreadcrumbsComponent({ items }) {
     <Box sx={{ mt: 5, mb: 5 }}>
       <Breadcrumbs
         aria-label="breadcrumb"
+        sx={{
+          '& .MuiBreadcrumbs-ol > li': {
+            margin: 0,
+            display: 'flex',
+            alignItems: 'center',
+          },
+        }}
         separator={
           <Divider
             orientation="horizontal"
@@ -34,6 +41,7 @@ function BreadcrumbsComponent({ items }) {
                 component={RouterLink}
                 to={item.to}
                 color="inherit"
+                sx={{ m: 'none' }}
               >
                 <Button
                   variant="outlined"

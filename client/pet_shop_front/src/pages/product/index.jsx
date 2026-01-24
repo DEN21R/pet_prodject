@@ -1,9 +1,11 @@
 import { Box, Button, Typography } from '@mui/material'
 import { fetchProductById } from '../../redux/slices/productsSlice'
+import { fetchProductsByCategory } from '../../redux/slices/productsSlice'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import BreadcrumbsComponent from '../../ui/breadcrumbsComponent'
+import PageContainer from '../../ui/pageContainer'
 
 function Product() {
   const dispatch = useDispatch()
@@ -18,6 +20,12 @@ function Product() {
     }
   }, [dispatch, id])
 
+  useEffect(() => {
+    if (current?.categoryId) {
+      dispatch(fetchProductsByCategory(current.categoryId))
+    }
+  }, [dispatch, current?.categoryId])
+
   if (status === 'loading') {
     return <h2>Loading product...</h2>
   }
@@ -31,27 +39,48 @@ function Product() {
   }
 
   return (
-    <Box>
+    <PageContainer>
       <BreadcrumbsComponent
         items={[
           { label: 'Main page', to: '/' },
           { label: 'Categories', to: '/categories' },
-          { label: `${currentCategory?.title || 'Products'}` },
+          {
+            label: currentCategory?.title || 'Products',
+            to:
+              currentCategory ? `/productsCategory/${currentCategory.id}` : '',
+          },
+          {
+            label:
+              current?.title && current.title.length > 20 ?
+                `${current.title.slice(0, 20)}...`
+              : current?.title || 'Products',
+          },
         ]}
       />
-      <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: {
+            xs: 'column',
+            sm: 'row',
+          },
+          gap: 4,
+        }}
+      >
         <Box
           component="img"
           src={`http://localhost:3333${current.image}`}
           alt={current.title}
           sx={{
             width: '100%',
-            height: { xs: 200, sm: 240, md: 572 },
-            objectFit: 'cover',
+            height: { xs: 200, sm: 340, md: 572 },
+            objectFit: 'contain',
           }}
         />
-        <Box>
-          <Typography variant="h3">{current.title}</Typography>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+          <Typography variant="productTitleTypography">
+            {current.title}
+          </Typography>
           <Box sx={{ display: 'flex', alignItems: 'flex-end', gap: 2 }}>
             {!current.discont_price ? null : (
               <Typography variant="discontTypography">
@@ -70,12 +99,15 @@ function Product() {
           <Box>
             <Button>Add to cart</Button>
           </Box>
-          <Box>
-            <Typography>{current.description}</Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Typography variant="filterTitle">Description</Typography>
+            <Typography variant="descriptionTypography">
+              {current.description}
+            </Typography>
           </Box>
         </Box>
       </Box>
-    </Box>
+    </PageContainer>
   )
 }
 export default Product

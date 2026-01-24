@@ -1,10 +1,11 @@
 import { Box, Typography } from '@mui/material'
+import PageContainer from '../../ui/pageContainer'
 
 function Cart() {
   return (
-    <Box>
+    <PageContainer>
       <Typography>cart</Typography>
-    </Box>
+    </PageContainer>
   )
 }
 export default Cart

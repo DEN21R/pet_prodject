@@ -5,6 +5,7 @@ import { fetchAllProducts } from '../../redux/slices/productsSlice'
 import BreadcrumbsComponent from '../../ui/breadcrumbsComponent'
 import ProductCard from '../../ui/productCard'
 import FilterBar from '../../ui/filterBar'
+import PageContainer from '../../ui/pageContainer'
 
 function AllProducts() {
   const dispatch = useDispatch()
@@ -23,7 +24,7 @@ function AllProducts() {
   }
 
   return (
-    <Box sx={{ px: 5 }}>
+    <PageContainer>
       <BreadcrumbsComponent
         items={[{ label: 'Main page', to: '/' }, { label: 'All products' }]}
       />
@@ -47,7 +48,7 @@ function AllProducts() {
           ))}
         </Grid>
       </Box>
-    </Box>
+    </PageContainer>
   )
 }
 export default AllProducts

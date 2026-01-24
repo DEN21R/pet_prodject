@@ -9,6 +9,15 @@ const theme = createTheme({
     MuiTypography: {
       variants: [
         {
+          props: { variant: 'descriptionTypography' },
+          style: {
+            fontSize: '1rem',
+            fontWeight: 400,
+            color: '#282828',
+            lineHeight: '130%',
+          },
+        },
+        {
           props: { variant: 'footerTitle' },
           style: {
             fontSize: '1.25rem',
@@ -108,6 +117,22 @@ const theme = createTheme({
             color: '#282828',
             fontSize: '2.5rem',
             fontWeight: 600,
+            lineHeight: '110%',
+
+            '@media (max-width: 768px)': {
+              fontSize: '2rem',
+            },
+            '@media (max-width: 480px)': {
+              fontSize: '1,5rem',
+            },
+          },
+        },
+        {
+          props: { variant: 'productTitleTypography' },
+          style: {
+            color: '#282828',
+            fontSize: '2.5rem',
+            fontWeight: 700,
             lineHeight: '110%',
 
             '@media (max-width: 768px)': {
