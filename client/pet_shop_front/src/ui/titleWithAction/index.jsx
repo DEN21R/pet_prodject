@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 function TitleWithAction({ nav, title, btnText }) {
   const navigate = useNavigate()
   return (
-    <Box mt={5}>
+    <Box mt={5} mb={5}>
       <Box
         sx={{
           display: 'flex',
