@@ -4,7 +4,6 @@ import { fetchCategories } from '../../redux/slices/categoriesSlice'
 import { useEffect } from 'react'
 import CategoryCard from '../../ui/categoryCard'
 import BreadcrumbsComponent from '../../ui/breadcrumbsComponent'
-import PageContainer from '../../ui/pageContainer'
 
 function Categories() {
   const dispatch = useDispatch()
@@ -23,7 +22,7 @@ function Categories() {
   }
 
   return (
-    <PageContainer>
+    <Box sx={{ px: 5 }}>
       <BreadcrumbsComponent
         items={[{ label: 'Main page', to: '/' }, { label: 'categories' }]}
       />
@@ -40,7 +39,7 @@ function Categories() {
           ))}
         </Grid>
       </Box>
-    </PageContainer>
+    </Box>
   )
 }
 export default Categories

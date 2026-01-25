@@ -1,15 +1,28 @@
 import { Box, Grid, Typography } from '@mui/material'
-import { useEffect } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAllProducts } from '../../redux/slices/productsSlice'
 import BreadcrumbsComponent from '../../ui/breadcrumbsComponent'
 import ProductCard from '../../ui/productCard'
 import FilterBar from '../../ui/filterBar'
 import PageContainer from '../../ui/pageContainer'
+import { applyFilters } from '../../utils/applyFilters'
 
 function AllProducts() {
   const dispatch = useDispatch()
   const { all, status, error } = useSelector((state) => state.products)
+
+  const [filters, setFilters] = useState({
+    priceFrom: '',
+    priceTo: '',
+    onlyDiscounted: false,
+    sort: 'default',
+  })
+
+  const filteredProducts = useMemo(
+    () => applyFilters(all, filters),
+    [all, filters],
+  )
 
   useEffect(() => {
     dispatch(fetchAllProducts())
@@ -32,20 +45,25 @@ function AllProducts() {
       <Box sx={{ mb: 5 }}>
         <Typography variant="titleTypography">All products</Typography>
       </Box>
-      <FilterBar />
+      <FilterBar
+        filters={filters}
+        onChange={(f, v) => setFilters((p) => ({ ...p, [f]: v }))}
+      />
       <Box>
         <Grid container justifyContent={'center'} spacing={4}>
-          {all.map(({ id, title, image, price, discont_price }) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={id}>
-              <ProductCard
-                id={id}
-                title={title}
-                image={image}
-                price={price}
-                discont_price={discont_price}
-              />
-            </Grid>
-          ))}
+          {filteredProducts.map(
+            ({ id, title, image, price, discont_price }) => (
+              <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={id}>
+                <ProductCard
+                  id={id}
+                  title={title}
+                  image={image}
+                  price={price}
+                  discont_price={discont_price}
+                />
+              </Grid>
+            ),
+          )}
         </Grid>
       </Box>
     </PageContainer>

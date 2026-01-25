@@ -112,6 +112,22 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'firstOrderTypography' },
+          style: {
+            color: '#FFFFFF',
+            fontSize: '4rem',
+            fontWeight: 700,
+            lineHeight: '110%',
+
+            '@media (max-width: 768px)': {
+              fontSize: '2.5rem',
+            },
+            '@media (max-width: 480px)': {
+              fontSize: '2rem',
+            },
+          },
+        },
+        {
           props: { variant: 'discontTypography' },
           style: {
             color: '#282828',

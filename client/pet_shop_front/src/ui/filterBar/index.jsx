@@ -28,14 +28,28 @@ const FilterTextField = styled(TextField)(({ theme }) => ({
   },
 }))
 
-function FilterBar() {
+function FilterBar({ filters, onChange }) {
+  const handleChange = (field) => (e) => {
+    const value =
+      e.target.type === 'checkbox' ? e.target.checked : e.target.value
+
+    onChange(field, value)
+  }
   return (
     <Box mb={5}>
       <Stack direction="row" alignItems="center" spacing={4} flexWrap="wrap">
         <Stack direction="row" alignItems="center" spacing={2}>
           <Typography variant="filterTitle">Price</Typography>
-          <FilterTextField placeholder="from" />
-          <FilterTextField placeholder="to" />
+          <FilterTextField
+            placeholder="from"
+            value={filters.priceFrom}
+            onChange={handleChange('priceFrom')}
+          />
+          <FilterTextField
+            placeholder="to"
+            value={filters.priceTo}
+            onChange={handleChange('priceTo')}
+          />
         </Stack>
 
         <Stack direction="row" alignItems="center" spacing={2}>
@@ -43,6 +57,8 @@ function FilterBar() {
           <FormControlLabel
             control={
               <Checkbox
+                checked={filters.onlyDiscounted}
+                onChange={handleChange('onlyDiscounted')}
                 icon={<img src={boxNormal} width={36} height={36} />}
                 checkedIcon={<img src={boxActive} width={36} height={36} />}
               />
@@ -54,6 +70,8 @@ function FilterBar() {
           <Typography variant="filterTitle">Sorted</Typography>
           <Select
             size="small"
+            value={filters.sort}
+            onChange={handleChange('sort')}
             sx={{
               height: 36,
               minWidth: 200,
@@ -62,8 +80,8 @@ function FilterBar() {
             defaultValue="default"
           >
             <MenuItem value="default">by default</MenuItem>
-            <MenuItem value="price_asc">price: high-low</MenuItem>
-            <MenuItem value="price_desc">price: low-high</MenuItem>
+            <MenuItem value="price_desc">price: high-low</MenuItem>
+            <MenuItem value="price_asc">price: low-high</MenuItem>
           </Select>
         </Stack>
       </Stack>
