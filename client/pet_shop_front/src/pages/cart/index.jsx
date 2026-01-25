@@ -1,10 +1,15 @@
 import { Box, Typography } from '@mui/material'
 import PageContainer from '../../ui/pageContainer'
+import TitleWithAction from '../../ui/TitleWithAction'
 
 function Cart() {
   return (
     <PageContainer>
-      <Typography>cart</Typography>
+      <TitleWithAction
+        title="Shopping cart"
+        nav="/categories"
+        btnText="Back to the store"
+      />
     </PageContainer>
   )
 }
