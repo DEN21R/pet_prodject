@@ -1,8 +1,11 @@
 import { Card, CardMedia, Typography, Box } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { getDiscountPercent } from '../../utils/getDiscountPercent'
+import PercentContainer from '../percentContainer'
 
 function ProductCard({ id, title, image, price, discont_price }) {
   const navigate = useNavigate()
+
   return (
     <Card
       sx={{
@@ -10,6 +13,7 @@ function ProductCard({ id, title, image, price, discont_price }) {
         borderRadius: '12px',
         boxShadow: 'none',
         height: { xs: 'auto', md: 422 },
+        position: 'relative',
       }}
     >
       <CardMedia
@@ -45,6 +49,19 @@ function ProductCard({ id, title, image, price, discont_price }) {
             <Typography variant="discontTypography">${price}</Typography>
           : <Typography variant="priceTypography">${price}</Typography>}
         </Box>
+        {!discont_price ? null : (
+          <PercentContainer
+            sx={{
+              position: 'absolute',
+              top: 16,
+              right: 16,
+            }}
+          >
+            <Typography variant="percentTypography">
+              -{getDiscountPercent(price, discont_price)}%
+            </Typography>
+          </PercentContainer>
+        )}
       </Box>
     </Card>
   )

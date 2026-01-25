@@ -49,6 +49,15 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: 'percentTypography' },
+          style: {
+            fontSize: '1.25rem',
+            fontWeight: 600,
+            color: '#FFFFFF',
+            lineHeight: '130%',
+          },
+        },
+        {
           props: { variant: 'cardProductTitle' },
           style: {
             display: 'block',

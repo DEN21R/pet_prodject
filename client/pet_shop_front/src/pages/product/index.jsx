@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import BreadcrumbsComponent from '../../ui/breadcrumbsComponent'
 import PageContainer from '../../ui/pageContainer'
+import { getDiscountPercent } from '../../utils/getDiscountPercent'
+import PercentContainer from '../../ui/percentContainer'
 
 function Product() {
   const dispatch = useDispatch()
@@ -95,7 +97,15 @@ function Product() {
                 ${current.price}
               </Typography>
             }
+            {!current.discont_price ? null : (
+              <PercentContainer>
+                <Typography variant="percentTypography">
+                  -{getDiscountPercent(current.price, current.discont_price)}%
+                </Typography>
+              </PercentContainer>
+            )}
           </Box>
+
           <Box>
             <Button>Add to cart</Button>
           </Box>
