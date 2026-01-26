@@ -26,7 +26,7 @@ function MainPromotionsSection() {
       <Typography variant="bigTypography">
         Amazing Discounts on Pets Products!
       </Typography>
-      <ActionButton variant="contained" onClick={() => navigate('/cart')}>
+      <ActionButton variant="contained" onClick={() => navigate('/sale')}>
         Check out
       </ActionButton>
     </HeroBox>

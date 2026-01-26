@@ -24,7 +24,7 @@ function Categories() {
   return (
     <Box sx={{ px: 5 }}>
       <BreadcrumbsComponent
-        items={[{ label: 'Main page', to: '/' }, { label: 'categories' }]}
+        items={[{ label: 'Main page', to: '/' }, { label: 'Categories' }]}
       />
 
       <Box sx={{ mb: 5 }}>

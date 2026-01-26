@@ -28,11 +28,10 @@ function BreadcrumbsComponent({ items }) {
 
           return isLast ?
               <Button
-                disabled
                 key={item.label}
                 color="text.primary"
                 variant="outlined"
-                sx={{ color: '#8B8B8B', borderColor: '#DDDDDD' }}
+                sx={{ color: '#292828', borderColor: '#DDDDDD' }}
               >
                 {item.label}
               </Button>

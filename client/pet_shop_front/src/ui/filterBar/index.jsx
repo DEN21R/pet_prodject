@@ -28,7 +28,7 @@ const FilterTextField = styled(TextField)(({ theme }) => ({
   },
 }))
 
-function FilterBar({ filters, onChange }) {
+function FilterBar({ filters, onChange, showDiscount = true }) {
   const handleChange = (field) => (e) => {
     const value =
       e.target.type === 'checkbox' ? e.target.checked : e.target.value
@@ -52,19 +52,21 @@ function FilterBar({ filters, onChange }) {
           />
         </Stack>
 
-        <Stack direction="row" alignItems="center" spacing={2}>
-          <Typography variant="filterTitle">Discounted items</Typography>
-          <FormControlLabel
-            control={
-              <Checkbox
-                checked={filters.onlyDiscounted}
-                onChange={handleChange('onlyDiscounted')}
-                icon={<img src={boxNormal} width={36} height={36} />}
-                checkedIcon={<img src={boxActive} width={36} height={36} />}
-              />
-            }
-          />
-        </Stack>
+        {showDiscount && (
+          <Stack direction="row" alignItems="center" spacing={2}>
+            <Typography variant="filterTitle">Discounted items</Typography>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  checked={filters.onlyDiscounted}
+                  onChange={(e) => onChange('onlyDiscounted', e.target.checked)}
+                  icon={<img src={boxNormal} width={36} height={36} />}
+                  checkedIcon={<img src={boxActive} width={36} height={36} />}
+                />
+              }
+            />
+          </Stack>
+        )}
 
         <Stack direction="row" alignItems="center" spacing={2}>
           <Typography variant="filterTitle">Sorted</Typography>

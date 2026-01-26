@@ -37,7 +37,7 @@ function MainCategories() {
         btnText="All categories"
       />
       <Box>
-        <Grid container justifyContent={'center'} spacing={4} pb={21}>
+        <Grid container justifyContent={'center'} spacing={4} pb={13.25}>
           {fourElements.map(({ id, title, image }) => (
             <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={id}>
               <CategoryCard id={id} title={title} image={image} />

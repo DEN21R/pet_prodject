@@ -3,6 +3,18 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import cart from '../../assets/cart.svg'
 import styles from './styles.module.css'
+import { styled } from '@mui/material/styles'
+import IconButton from '@mui/material/IconButton'
+import Badge, { badgeClasses } from '@mui/material/Badge'
+
+const CartBadge = styled(Badge)`
+  & .${badgeClasses.badge} {
+    top: -8px;
+    right: 38px;
+    background-color: #0d50ff;
+    color: #ffff;
+  }
+`
 
 const menuNav = [
   {
@@ -18,7 +30,7 @@ const menuNav = [
     title: 'All products',
   },
   {
-    path: '/sales',
+    path: '/sale',
     title: 'All sales',
   },
 ]
@@ -67,13 +79,16 @@ function Header() {
           ))}
         </Box>
 
-        <Box
-          component="img"
-          src={cart}
-          alt="cart"
-          sx={{ cursor: 'pointer' }}
-          onClick={() => navigate('/cart')}
-        />
+        <IconButton>
+          <Box
+            component="img"
+            src={cart}
+            alt="cart"
+            sx={{ cursor: 'pointer' }}
+            onClick={() => navigate('/cart')}
+          />
+          <CartBadge badgeContent={1} color="primary" overlap="circular" />
+        </IconButton>
       </Toolbar>
     </AppBar>
   )
