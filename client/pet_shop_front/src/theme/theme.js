@@ -84,6 +84,21 @@ const theme = createTheme({
               fontSize: '2rem',
             },
             '@media (max-width: 480px)': {
+              fontSize: '1.25rem',
+            },
+          },
+        },
+        {
+          props: { variant: 'totalTypography' },
+          style: {
+            fontSize: '2.5rem',
+            fontWeight: 500,
+            color: '#8B8B8B',
+            lineHeight: '130%',
+            '@media (max-width: 768px)': {
+              fontSize: '2rem',
+            },
+            '@media (max-width: 480px)': {
               fontSize: '1.5rem',
             },
           },

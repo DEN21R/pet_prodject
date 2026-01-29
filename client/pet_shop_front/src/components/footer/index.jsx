@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles'
 import { Box, Grid, Paper, Typography } from '@mui/material'
+
 import inst from '../../assets/ic-instagram.svg'
 import viber from '../../assets/viber.svg'
 
@@ -20,7 +21,7 @@ function Footer() {
 
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={4} alignItems="flex-start">
-          <Grid size={8}>
+          <Grid size={{ xs: 12, md: 8 }}>
             <Item
               sx={{
                 height: {
@@ -33,7 +34,7 @@ function Footer() {
               <Typography variant="cardInfo">+49 30 915-88492</Typography>
             </Item>
           </Grid>
-          <Grid size={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Item
               sx={{
                 height: {
@@ -55,7 +56,7 @@ function Footer() {
               </Box>
             </Item>
           </Grid>
-          <Grid size={8}>
+          <Grid size={{ xs: 12, md: 8 }}>
             <Item
               sx={{
                 height: {
@@ -70,7 +71,7 @@ function Footer() {
               </Typography>
             </Item>
           </Grid>
-          <Grid size={4}>
+          <Grid size={{ xs: 12, md: 4 }}>
             <Item
               sx={{
                 height: {

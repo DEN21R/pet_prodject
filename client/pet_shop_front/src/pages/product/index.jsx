@@ -1,17 +1,20 @@
 import { Box, Button, Typography } from '@mui/material'
 import { fetchProductById } from '../../redux/slices/productsSlice'
 import { fetchProductsByCategory } from '../../redux/slices/productsSlice'
+import { addToCart } from '../../redux/slices/cartSlice'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import BreadcrumbsComponent from '../../ui/breadcrumbsComponent'
 import PageContainer from '../../ui/pageContainer'
 import { getDiscountPercent } from '../../utils/getDiscountPercent'
 import PercentContainer from '../../ui/percentContainer'
+import Count from '../../utils/count'
 
 function Product() {
   const dispatch = useDispatch()
   const { id } = useParams()
+  const [quantity, setQuantity] = useState(1)
   const { current, currentCategory, status, error } = useSelector(
     (state) => state.products,
   )
@@ -27,6 +30,19 @@ function Product() {
       dispatch(fetchProductsByCategory(current.categoryId))
     }
   }, [dispatch, current?.categoryId])
+
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        id: current.id,
+        title: current.title,
+        price: current.price,
+        discont_price: current.discont_price,
+        image: current.image,
+        quantity,
+      }),
+    )
+  }
 
   if (status === 'loading') {
     return <h2>Loading product...</h2>
@@ -75,7 +91,7 @@ function Product() {
           alt={current.title}
           sx={{
             width: '100%',
-            height: { xs: 200, sm: 340, md: 572 },
+            height: { xs: 200, sm: 340, md: 472, lg: 572 },
             objectFit: 'contain',
           }}
         />
@@ -106,8 +122,28 @@ function Product() {
             )}
           </Box>
 
-          <Box>
-            <Button>Add to cart</Button>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 2,
+              flexDirection: {
+                sm: 'column',
+                md: 'row',
+              },
+            }}
+          >
+            <Count onCountChange={setQuantity} />
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: '#0D50FF',
+                padding: 'clamp(7px, 1.5vw, 17px) clamp(20px, 6vw, 108px)',
+              }}
+              onClick={handleAddToCart}
+            >
+              Add to cart
+            </Button>
           </Box>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <Typography variant="filterTitle">Description</Typography>

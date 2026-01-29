@@ -1,5 +1,6 @@
 import { AppBar, Toolbar, Box } from '@mui/material'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import logo from '../../assets/logo.png'
 import cart from '../../assets/cart.svg'
 import styles from './styles.module.css'
@@ -37,6 +38,7 @@ const menuNav = [
 
 function Header() {
   const navigate = useNavigate()
+  const cartTotal = useSelector((state) => state.cart.totalQuantity)
 
   return (
     <AppBar
@@ -45,7 +47,7 @@ function Header() {
       sx={{
         borderBottom: '1px solid #DDDDDD',
         backgroundColor: '#fff',
-        px: 5,
+        px: { xs: 2, sm: 3, md: 5 },
         py: 3.75,
       }}
     >
@@ -87,7 +89,11 @@ function Header() {
             sx={{ cursor: 'pointer' }}
             onClick={() => navigate('/cart')}
           />
-          <CartBadge badgeContent={1} color="primary" overlap="circular" />
+          <CartBadge
+            badgeContent={cartTotal}
+            color="primary"
+            overlap="circular"
+          />
         </IconButton>
       </Toolbar>
     </AppBar>
